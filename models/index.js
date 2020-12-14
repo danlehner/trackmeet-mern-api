@@ -2,19 +2,17 @@ const mongoose = require('mongoose');
 
 const connectionString = process.env.MONGODB_URI || "mongodb://localhost:27017/trackmeet-mern";
 
+const configOptions = {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+};
+
 mongoose
-  .connect(connectionString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-  .then(function () {
-    console.log("Mongodb connected....");
-  })
-  .catch(function (error) {
-    console.log("Mongodb connection err", error);
-  });
+  .connect(connectionString, configOptions)
+  .then(() => console.log("MongoDB successfully connected..."))
+  .catch((err) => console.log(`MongoDB connection error: ${err}`));
 
 mongoose.connection.on("disconnect", function (event) {
   console.log("mongodb disconnected", event);

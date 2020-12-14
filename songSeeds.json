@@ -1,0 +1,54 @@
+{
+  "songs": [
+    {
+      "_id": "5fa1e30fc29c3f51475d2948",
+      "dzArtistId": 92319522,
+      "title": "Savage Love (Laxed - Siren Beat)",
+      "artist": "5fa1e30fc29c3f51475d2947",
+      "artistPicture": "https://e-cdns-images.dzcdn.net/images/cover/ae220905519d1bb84cddd953abbc08da/250x250-000000-80-0-0.jpg",
+      "albumArt": "https://e-cdns-images.dzcdn.net/images/artist/e81ea567c8ca45a3992b50a240f08f47/1000x1000-000000-80-0-0.jpg",
+      "genre": "5fa1e30fc29c3f51475d2946",
+      "genrePicture": "https://e-cdns-images.dzcdn.net/images/misc/db7a604d9e7634a67d45cfc86b48370a/1000x1000-000000-80-0-0.jpg"
+    }, 
+    {
+      "_id": "5fa1e310c29c3f51475d2951",
+      "dzArtistId": 62607362,
+      "title": "ily (i love you baby)",
+      "artist": "5fa1e310c29c3f51475d2950",
+      "artistPicture": "https://e-cdns-images.dzcdn.net/images/cover/81533216382c3957b8a3fda95105c7b9/250x250-000000-80-0-0.jpg",
+      "albumArt": "https://e-cdns-images.dzcdn.net/images/artist/4fadebc02a47f9048daaf0132561bb1b/1000x1000-000000-80-0-0.jpg",
+      "genre": "5fa1e310c29c3f51475d294f",
+      "genrePicture": "https://e-cdns-images.dzcdn.net/images/misc/bd5fdfa1a23e02e2697818e09e008e69/1000x1000-000000-80-0-0.jpg"
+    }, 
+    {
+      "_id": "5fa1e310c29c3f51475d295a",
+      "dzArtistId": 362326,
+      "title": "Love Lies",
+      "artist": "5fa1e310c29c3f51475d2959",
+      "artistPicture": "https://e-cdns-images.dzcdn.net/images/cover/5fa933d7f3523f7249129d0675dd8893/250x250-000000-80-0-0.jpg",
+      "albumArt": "https://e-cdns-images.dzcdn.net/images/artist/5d3af4fb628743f03d18a9cedd829b04/1000x1000-000000-80-0-0.jpg",
+      "genre": "5fa1e310c29c3f51475d2958",
+      "genrePicture": "https://e-cdns-images.dzcdn.net/images/misc/5c27115d3b797954afff59199dad98d1/1000x1000-000000-80-0-0.jpg"
+    }, 
+     {
+      "_id": "5fa1e311c29c3f51475d2963",
+      "dzArtistId": 5715568,
+      "title": "Love Don't Complain",
+      "artist": "5fa1e311c29c3f51475d2962",
+      "artistPicture": "https://e-cdns-images.dzcdn.net/images/cover/dc9ec3b8e40cb3301a26dd6a89654ad7/250x250-000000-80-0-0.jpg",
+      "albumArt": "https://e-cdns-images.dzcdn.net/images/artist/43f8be522f23e2571e9e99795f3bbcf8/1000x1000-000000-80-0-0.jpg",
+      "genre": "5fa1e311c29c3f51475d2961",
+      "genrePicture": "https://cdns-images.dzcdn.net/images/misc/15df4502c1c58137dae5bdd1cc6f0251/1000x1000-000000-80-0-0.jpg"
+    }, 
+    {
+      "_id": "5fa1e33fc29c3f51475d296f",
+      "dzArtistId": 8741,
+      "title": "Jolene",
+      "artist": "5fa1e33fc29c3f51475d296e",
+      "artistPicture": "https://cdns-images.dzcdn.net/images/cover/d47fc7a27a0d40cc2a8c119ed2bc53b7/250x250-000000-80-0-0.jpg",
+      "albumArt": "https://cdns-images.dzcdn.net/images/artist/2f34b98055ff0d7b2b9c2ca76e36f8bd/1000x1000-000000-80-0-0.jpg",
+      "genre": "5fa1e33fc29c3f51475d296d",
+      "genrePicture": "https://e-cdns-images.dzcdn.net/images/misc/6eca3188f724f04843a15e3e575751a5/1000x1000-000000-80-0-0.jpg"
+    }
+  ]
+}
