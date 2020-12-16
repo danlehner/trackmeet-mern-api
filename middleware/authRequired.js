@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken")
 
-const authRequired = (req, res, next) => {
+module.exports = (req, res, next) => {
   const bearerHeader = req.headers["authorizaiton"]
   if (typeof bearerHeader !== "undefined") {
     const token = bearerHeader.split(" ")[1]
@@ -14,8 +14,4 @@ const authRequired = (req, res, next) => {
   } else {
     res.status(403)
   }
-}
-
-module.exports = {
-  authRequired,
 }
