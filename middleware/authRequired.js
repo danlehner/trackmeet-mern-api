@@ -1,17 +1,18 @@
 const jwt = require("jsonwebtoken")
 
 module.exports = (req, res, next) => {
-  const bearerHeader = req.headers["authorizaiton"]
-  if (typeof bearerHeader !== "undefined") {
-    const token = bearerHeader.split(" ")[1]
+  const bearerHeader = req.headers["authorization"];
+if (typeof bearerHeader !== "undefined") {
+  const token = bearerHeader.split(" ")[1];
 
-    jwt.verify(token, "space_waffles_commander", function (err, payload) {
-      if (err) return res.status(500).json({ message: "Invalid token" })
-    })
+  jwt.verify(token, "space_waffles_commander", function (err, payload) {
+    if (err) return res.status(500).json({ message: "Invalid token" });
 
-    req.userId = payload._id
-    next()
-  } else {
-    res.status(403)
-  }
+    req.userId = payload._id; 
+    
+    next();
+  });
+} else {
+  res.sendStatus(403);
 }
+};
