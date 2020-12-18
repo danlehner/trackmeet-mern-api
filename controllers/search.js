@@ -2,8 +2,10 @@ const express = require('express')
 const router = express.Router()
 const db = require('../models')
 
-const show = (req, res) => {
-  res.status(200).json({ status: 200 })
+const show = async (req, res) => {
+  const foundUser = await db.User.findById(req.userId)
+
+  res.status(200).json({ status: 200, data: foundUser })
 }
 
 const post = async (req, res) => {
@@ -15,117 +17,116 @@ const post = async (req, res) => {
   const foundArtist = await db.Artist.findOne({ dzArtistId: req.body.dzArtistId})
   const foundGenre = await db.Genre.findOne({ dzGenreId: req.body.dzGenreId })
 
-  // try {
 
-  //   if (foundGenre && foundArtist) {
+  try {
 
-  //     req.body.genre = foundGenre._id
-  //     req.body.artist = foundArtist._id
+    if (foundGenre && foundArtist) {
 
-  //     const createdSong = await db.Song.create(req.body)
+      req.body.genre = foundGenre._id
+      req.body.artist = foundArtist._id
 
-  //     foundGenre.songs.push(createdSong)
-  //     foundArtist.songs.push(createdSong)
+      const createdSong = await db.Song.create(req.body)
 
-  //     user.songs.push(createdSong)
+      foundGenre.songs.push(createdSong)
+      foundArtist.songs.push(createdSong)
 
-  //     await foundArtist.save() 
-  //     await foundGenre.save() 
-  //     await user.save()
+      user.songs.push(createdSong)
 
-  //   } else if (foundGenre) {
+      await foundArtist.save() 
+      await foundGenre.save() 
+      await user.save()
 
-  //     req.body.genre = foundGenre._id
+    } else if (foundGenre) {
 
-  //     const createdArtist = await db.Artist.create({
-  //       dzArtistId: req.body.dzArtistId,
-  //       name: req.body.artist,
-  //       genre: req.body.genre, 
-  //       artistPicture: req.body.artistPicture
-  //     })
+      req.body.genre = foundGenre._id
 
-  //     req.body.artist = createdArtist._id
+      const createdArtist = await db.Artist.create({
+        dzArtistId: req.body.dzArtistId,
+        name: req.body.artist,
+        genre: req.body.genre, 
+        artistPicture: req.body.artistPicture
+      })
 
-  //     const createdSong = await db.Song.create(req.body)
+      req.body.artist = createdArtist._id
 
-  //     foundGenre.artists.push(createdArtist)
-  //     foundGenre.songs.push(createdSong)
-  //     createdArtist.songs.push(createdSong)
+      const createdSong = await db.Song.create(req.body)
 
-  //     user.artists.push(createdArtist)
-  //     user.songs.push(createdSong)
+      foundGenre.artists.push(createdArtist)
+      foundGenre.songs.push(createdSong)
+      createdArtist.songs.push(createdSong)
 
-  //     await createdArtist.save() 
-  //     await foundGenre.save() 
-  //     await user.save()
+      user.artists.push(createdArtist)
+      user.songs.push(createdSong)
 
-  //    } else if (foundArtist) {
+      await createdArtist.save() 
+      await foundGenre.save() 
+      await user.save()
 
-  //     req.body.artist = foundArtist._id
+     } else if (foundArtist) {
 
-  //     const createdGenre = await db.Genre.create({
-  //       dzGenreId: req.body.dzGenreId,
-  //       name: req.body.genre, 
-  //       genrePicture: req.body.genrePicture
-  //     })
+      req.body.artist = foundArtist._id
 
-  //     req.body.genre = createdGenre._id
+      const createdGenre = await db.Genre.create({
+        dzGenreId: req.body.dzGenreId,
+        name: req.body.genre, 
+        genrePicture: req.body.genrePicture
+      })
 
-  //     const createdSong = await db.Song.create(req.body)
+      req.body.genre = createdGenre._id
 
-  //     createdGenre.artists.push(foundArtist)
-  //     createdGenre.songs.push(createdSong)
-  //     foundArtist.songs.push(createdSong)
+      const createdSong = await db.Song.create(req.body)
 
-  //     user.genres.push(createdGenre)
-  //     user.songs.push(createdSong)
+      createdGenre.artists.push(foundArtist)
+      createdGenre.songs.push(createdSong)
+      foundArtist.songs.push(createdSong)
 
-  //     await createdGenre.save()
-  //     await foundArtist.save()
-  //     await user.save() 
+      user.genres.push(createdGenre)
+      user.songs.push(createdSong)
 
-  //    } else {
+      await createdGenre.save()
+      await foundArtist.save()
+      await user.save() 
 
-  //     const createdGenre = await db.Genre.create({
-  //       dzGenreId: req.body.dzGenreId,
-  //       name: req.body.genre, 
-  //       genrePicture: req.body.genrePicture
-  //     })
+     } else {
+
+      const createdGenre = await db.Genre.create({
+        dzGenreId: req.body.dzGenreId,
+        name: req.body.genre, 
+        genrePicture: req.body.genrePicture
+      })
     
-  //     req.body.genre = createdGenre
+      req.body.genre = createdGenre
     
-  //     const createdArtist = await db.Artist.create({
-  //       dzArtistId: req.body.dzArtistId,
-  //       name: req.body.artist,
-  //       genre: req.body.genre, 
-  //       artistPicture: req.body.artistPicture
-  //     })
+      const createdArtist = await db.Artist.create({
+        dzArtistId: req.body.dzArtistId,
+        name: req.body.artist,
+        genre: req.body.genre, 
+        artistPicture: req.body.artistPicture
+      })
     
-  //     req.body.artist = createdArtist
+      req.body.artist = createdArtist
 
-  //     const createdSong = await db.Song.create(req.body)
+      const createdSong = await db.Song.create(req.body)
     
-  //     createdGenre.songs.push(createdSong)
-  //     createdGenre.artists.push(createdArtist)
-  //     createdArtist.songs.push(createdSong)
+      createdGenre.songs.push(createdSong)
+      createdGenre.artists.push(createdArtist)
+      createdArtist.songs.push(createdSong)
 
-  //     user.genres.push(createdGenre)
-  //     user.artists.push(createdArtist)
-  //     user.songs.push(createdSong)
+      user.genres.push(createdGenre)
+      user.artists.push(createdArtist)
+      user.songs.push(createdSong)
     
-  //     await createdArtist.save()
-  //     await createdGenre.save()
-  //     await user.save()
-  //   }
-
-  console.log(req.body)
+      await createdArtist.save()
+      await createdGenre.save()
+      await user.save()
+    }
 
     res.status(200).json({ status: 200, user: user })
 
-  // } catch (error) {
-  //   console.log(error)
-  //   res.send( { message: 'Internal Server Error'} )
-  // }
+  } catch (error) {
+    console.log(error)
+    res.send( { message: 'Internal Server Error'} )
+  }
 }
 
 module.exports = {
