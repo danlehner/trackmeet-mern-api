@@ -2,7 +2,7 @@ const db = require("../models")
 
 const show = async (req, res) => {
   try {
-    const foundUser = db.User.findById(req.userId)
+    const foundUser = await db.User.findById(req.userId)
 
     res.status(200).json({ status: 200, data: foundUser })
   } catch (error) {
