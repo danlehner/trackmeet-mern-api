@@ -1,5 +1,6 @@
 module.exports = {
   auth: require("./auth"),
   user: require("./user"),
-  search: require("./search")
+  search: require("./search"),
+  profile: require("./profile"),
 }
