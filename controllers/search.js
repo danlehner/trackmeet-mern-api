@@ -100,7 +100,7 @@ const post = async (req, res) => {
       const createdArtist = await db.Artist.create({
         dzArtistId: req.body.dzArtistId,
         name: req.body.artist,
-        genre: req.body.genre, 
+        genre: req.body.genre, // <- get rid of this? 
         artistPicture: req.body.artistPicture
       })
     
@@ -121,7 +121,7 @@ const post = async (req, res) => {
       await user.save()
     }
 
-    res.status(200).json({ status: 200, user: user })
+    res.status(200).json({ message: "success" })
 
   } catch (error) {
     console.log(error)
