@@ -17,8 +17,11 @@ app.use(cors())
 // Auth Routes
 app.use("/api/v1/auth", routes.auth)
 
-// Users Routers
+// Users Routes -> will this actually exist in the final?
 app.use("/api/v1/users", routes.user)
+
+// Profile Routes
+app.use("/api/v1/profile", routes.profile)
 
 // Search Route
 app.use("/api/v1/search", routes.search)

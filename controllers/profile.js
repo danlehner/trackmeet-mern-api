@@ -30,6 +30,8 @@ const edit = async (req, res) => {
 
 const update = async (req, res) => {
   try {
+    const foundUser = await db.User.findById(req.userId)
+
     const updateData = {
       $set: {
         username: req.body.username,
@@ -39,7 +41,9 @@ const update = async (req, res) => {
       },
     }
 
-    await db.User.findByIdAndUpdate(req.userId, updateData, { new: true })
+    await db.User.findByIdAndUpdate(foundUser._id, updateData, { new: true })
+
+    res.status(200).json({ data: foundUser })
   } catch (error) {
     return res.status(500).json({
       status: 500,
@@ -50,9 +54,11 @@ const update = async (req, res) => {
 
 const songDelete = async (req, res) => {
   try {
-    const user = await db.User.findById(req.session.currentUser.id).populate("songs").populate("genres").populate("artists")
+    const user = await db.User.findById(req.userId).populate("songs").populate("genres").populate("artists")
 
-    const songToDelete = await db.Song.findById({ _id: req.params.songID })
+    console.log(user)
+
+    const songToDelete = await db.Song.findById({ _id: req.params.songId })
 
     user.songs.remove(songToDelete)
 
@@ -81,9 +87,11 @@ const songDelete = async (req, res) => {
       await genre.save()
     }
 
-    res.status(200).json({ song: songToDelete })
+    await db.Song.findByIdAndDelete(req.params.id)
 
     await user.save()
+
+    res.status(200).json({ message: "song deleted" })
   } catch (error) {
     console.log(error)
     res.send({ message: "Internal Server Error" })
