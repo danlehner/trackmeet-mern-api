@@ -4,7 +4,8 @@ const ctrl = require("../controllers")
 const authRequired = require("../middleware/authRequired")
 
 router.get("/", authRequired, ctrl.song.index)
-router.get("/:genreId", authRequired, ctrl.song.show)
-router.delete("/:genreId", authRequired, ctrl.song.destroy)
+router.get("/:songId", authRequired, ctrl.song.show)
+router.put("/:songId", authRequired, ctrl.song.update)
+router.delete("/:songId", authRequired, ctrl.song.destroy)
 
 module.exports = router

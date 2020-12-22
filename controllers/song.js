@@ -30,6 +30,54 @@ const show = async (req, res) => {
   }
 }
 
+const update = async (req, res) => {
+  try {
+    let updatedData
+
+    if (req.body.testimony) {
+      updatedData = {
+        $set: {
+          testimony: req.body.testimony,
+        },
+      }
+    } else if (req.body.listenedTo == "on") {
+      updatedData = {
+        $set: {
+          listenedTo: true,
+        },
+      }
+    } else {
+      updatedData = {
+        $set: {
+          listenedTo: false,
+        },
+      }
+    }
+    if (req.body.testimony && req.body.listenedTo == "on") {
+      updatedData = {
+        $set: {
+          testimony: req.body.testimony,
+          listenedTo: true,
+        },
+      }
+    } else if (req.body.testimony && req.body.listenedTo == "off") {
+      updatedData = {
+        $set: {
+          testimony: req.body.testimony,
+          listenedTo: false,
+        },
+      }
+    }
+
+    const updatedSong = await db.Song.findByIdAndUpdate(req.params.songId, updatedData, { new: true })
+
+    res.status(200).json({ data: updatedSong })
+  } catch (error) {
+    console.log(error)
+    res.send({ message: "Internal Server Error" })
+  }
+}
+
 const destroy = async (req, res) => {
   try {
     const user = await db.User.findById(req.userId).populate("songs").populate("genres").populate("artists")
@@ -77,5 +125,6 @@ const destroy = async (req, res) => {
 module.exports = {
   index,
   show,
+  update,
   destroy,
 }
