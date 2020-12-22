@@ -23,6 +23,15 @@ app.use("/api/v1/users", routes.user)
 // Profile Routes
 app.use("/api/v1/profile", routes.profile)
 
+// Genre Routes
+app.use("/api/v1/genres", routes.genre)
+
+// Artist Routes
+app.use("/api/v1/artists", routes.artist)
+
+// Song Routes
+app.use("/api/v1/songs", routes.song)
+
 // Search Route
 app.use("/api/v1/search", routes.search)
 
