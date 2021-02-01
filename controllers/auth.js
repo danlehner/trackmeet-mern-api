@@ -50,9 +50,7 @@ const login = async (req, res) => {
           _id: foundUser._id,
         },
         "space_waffles_commander",
-        {
-          expiresIn: "1hr",
-        }
+        {}
       )
 
       return res.status(200).json({
